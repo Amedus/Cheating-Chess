@@ -112,6 +112,7 @@ public class GameInitialization : MonoBehaviour
         AddPieceToTheSquare("Black Knight","B8");
         AddPieceToTheSquare("White Knight","G1");
         AddPieceToTheSquare("Black Knight","G8");
+        AddPieceToTheSquare("Black Knight", "E4");
         for (int i = 0; i < 8; ++i) //расставляем пешки
         {
             AddPieceToTheSquare("White Pawn",((char)(65 + i)).ToString() + "2");
@@ -124,10 +125,18 @@ public class GameInitialization : MonoBehaviour
     {
         CreateBoard();
         AddPiecesToStartingPositions();
+        
     }
+
+    bool move = false;
 
     void Update()
     {
-           // AddPieceToTheSquare("Black King","A2");   
+        if (!move)
+        {
+            GameEvents.current.MakeMove("E2E4");
+            move = true;
+        }
+        
     }
 }

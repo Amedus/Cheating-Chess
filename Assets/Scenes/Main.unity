@@ -132,7 +132,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1748909756}
+  - component: {fileID: 1748909758}
   - component: {fileID: 1748909755}
+  - component: {fileID: 1748909757}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -184,6 +186,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1748909757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748909754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d699750b9d7d3b0469701f4779762b4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1748909758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748909754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3477e9ade500644098d5a24783e5487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2121173436
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +221,7 @@ GameObject:
   - component: {fileID: 2121173439}
   - component: {fileID: 2121173438}
   - component: {fileID: 2121173437}
+  - component: {fileID: 2121173440}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -268,3 +295,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2121173440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121173436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5fa8855432002844973a39e1b4dc26c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: E2E4
