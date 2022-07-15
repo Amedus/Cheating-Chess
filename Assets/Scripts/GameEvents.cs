@@ -12,10 +12,17 @@ public class GameEvents : MonoBehaviour
         current = this;
     }
 
-    public event Action<string> onMakeMove; //объ€вл€ем событие
+    public event Action<string> onMakeMove; //объ€вл€ем событие "сделать ход"
     public void MakeMove(string move) //объ€вл€ем публичный метод дл€ событи€ 
     {
         if (onMakeMove != null) //перед вызовом убеждаемс€, что событие существует
             onMakeMove(move);
     }
+
+    public event Action<string> onSendSquare; //отправка координат дл€ хода
+    public void SendSquare(string square)
+    {
+        if (onSendSquare != null)
+            onSendSquare(square);
+    }    
 }

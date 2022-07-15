@@ -81,7 +81,8 @@ public class GameInitialization : MonoBehaviour
         for (int i = 0; i < 8; ++i)
         {
             GameObject currentText = Instantiate(squareName, new Vector3(i,-1,0), Quaternion.identity); //создаём подпись из префаба
-            currentText.GetComponent<TextMeshPro>().text = ((char)(65 + i)).ToString(); //меняем текст подписи на нужный
+            currentText.name = ((char)(65 + i)).ToString(); //меняем имя объекта на нужный
+            currentText.GetComponent<TextMeshPro>().text = currentText.name; //меняем текст подписи на нужный
             currentText.transform.SetParent(squareNames.transform); //указываем для текущей подписи объект CellsNames в качестве родителя
         }
 
@@ -89,7 +90,8 @@ public class GameInitialization : MonoBehaviour
         for (int i = 0; i < 8; ++i)
         {
             GameObject currentText = Instantiate(squareName, new Vector3(-1,i,0), Quaternion.identity); //создаём подпись из префаба
-            currentText.GetComponent<TextMeshPro>().text = (i + 1).ToString(); //меняем текст подписи на нужный
+            currentText.name = (i + 1).ToString(); //меняем имя объекта на нужный
+            currentText.GetComponent<TextMeshPro>().text = currentText.name; //меняем текст подписи на нужный
             currentText.transform.SetParent(squareNames.transform); //указываем для текущей подписи объект CellsNames в качестве родителя
         }
     }
@@ -112,7 +114,7 @@ public class GameInitialization : MonoBehaviour
         AddPieceToTheSquare("Black Knight","B8");
         AddPieceToTheSquare("White Knight","G1");
         AddPieceToTheSquare("Black Knight","G8");
-        AddPieceToTheSquare("Black Knight", "E4");
+
         for (int i = 0; i < 8; ++i) //расставляем пешки
         {
             AddPieceToTheSquare("White Pawn",((char)(65 + i)).ToString() + "2");
@@ -128,15 +130,8 @@ public class GameInitialization : MonoBehaviour
         
     }
 
-    bool move = false;
-
     void Update()
     {
-        if (!move)
-        {
-            GameEvents.current.MakeMove("E2E4");
-            move = true;
-        }
         
     }
 }
