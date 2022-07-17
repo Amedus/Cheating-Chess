@@ -9,22 +9,22 @@ public class PiecesMovingController : MonoBehaviour
     private bool isMoving = false;
     void Start()
     {
-        GameEvents.current.onMakeMove += MakeMove; //подписываемся на событие MakeMove
+        GameEvents.current.onMakeMove += MakeMove; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ MakeMove
     }
 
-    private void MakeMove(string move) //описываем действия, которые будут выполняться при запуске события
+    private void MakeMove(string move) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     {
-        GameObject fromSquare = GameObject.Find(move.Substring(0, 2)); //находим по первым двум символам хода начальную клетку
-        GameObject toSquare = GameObject.Find(move.Substring(2, 2)); //по последним двум символам хода находим целевую клетку
-        if (fromSquare.transform.childCount > 0) //проверяем, что на начальной клетке есть фигура
+        GameObject fromSquare = GameObject.Find(move.Substring(0, 2)); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+        GameObject toSquare = GameObject.Find(move.Substring(2, 2)); //пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+        if (fromSquare.transform.childCount > 1) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         {
-            GameObject currentPiece = fromSquare.transform.GetChild(0).gameObject; //на начальной клетке находим фигуру, коуторую хотим переместить из начальной в целевую клетку
+            GameObject currentPiece = fromSquare.transform.GetChild(1).gameObject; //пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
-            if ((fromSquare) && (toSquare) && (currentPiece) && (toSquare != fromSquare)) //убеждаемся, что нашли начальную и целевую клетку, и что на начальной была фигура
+            if ((fromSquare) && (toSquare) && (currentPiece) && (toSquare != fromSquare)) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             {
-                isMoving = true; //указываем, что нужно двигать фигуру
-                from = fromSquare; //откуда
-                to = toSquare; //и куда
+                isMoving = true; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+                from = fromSquare; //пїЅпїЅпїЅпїЅпїЅпїЅ
+                to = toSquare; //пїЅ пїЅпїЅпїЅпїЅ
             }
             else
                 Debug.Log("Can't make a move:" + move);
@@ -36,18 +36,18 @@ public class PiecesMovingController : MonoBehaviour
 
     void Update()
     {
-        if (isMoving) //если нужно двигать фигуру
+        if (isMoving) //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         {
-            GameObject currentPiece = from.transform.GetChild(0).gameObject; //ищем фигуру на исходной клетке через дочерний объект
-            currentPiece.transform.position = Vector3.MoveTowards(currentPiece.transform.position, to.transform.position, 0.025f); //двигаем фигуру на 2,5% за кадр
-            if (currentPiece.transform.position == to.transform.position) //если фигура доехала
+            GameObject currentPiece = from.transform.GetChild(1).gameObject; //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+            currentPiece.transform.position = Vector3.MoveTowards(currentPiece.transform.position, to.transform.position, 0.025f); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 2,5% пїЅпїЅ пїЅпїЅпїЅпїЅ
+            if (currentPiece.transform.position == to.transform.position) //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
-                isMoving = false; //указываем, что движение завершено
-                if (to.transform.childCount > 0)
-                    Destroy(to.transform.GetChild(0).gameObject); //если на целевой клетке была фигура - уничтожаем её
+                isMoving = false; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                if (to.transform.childCount > 1)
+                    Destroy(to.transform.GetChild(1).gameObject); //пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ
 
-                currentPiece.transform.SetParent(to.transform); //привязываем перемещаемую фигуру к новой клетке
-                currentPiece.transform.position = to.transform.position; //двигаем фигуру на новую клетку*/
+                currentPiece.transform.SetParent(to.transform); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+                currentPiece.transform.position = to.transform.position; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ*/
             }                
         }
     }
