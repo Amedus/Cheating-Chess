@@ -4,51 +4,57 @@ using UnityEngine;
 
 public class PiecesMovingController : MonoBehaviour
 {
-    private GameObject from = null;
-    private GameObject to = null;
-    private bool isMoving = false;
+    public float movingSpeed = 7.5f; // скорость движения фигуры по доске
+
+    private GameObject fromSquare = null; //начальная клетка хода
+    private GameObject toSquare = null; //целевая клетка хода
+    private GameObject currentPiece = null; //передвигаемая фигура
+    private bool isMoving = false; //флаг указывающий, что сейчас передвигается фигура
+
     void Start()
     {
-        GameEvents.current.onMakeMove += MakeMove; //������������� �� ������� MakeMove
+        GameEvents.current.onMakeMove += MakeMove; //подписываемся на событие MakeMove
     }
 
-    private void MakeMove(string move) //��������� ��������, ������� ����� ����������� ��� ������� �������
+    private void MakeMove(string move) //выполнение хода формата "E2E4" из строки move при триггере события MakeMove
     {
-        GameObject fromSquare = GameObject.Find(move.Substring(0, 2)); //������� �� ������ ���� �������� ���� ��������� ������
-        GameObject toSquare = GameObject.Find(move.Substring(2, 2)); //�� ��������� ���� �������� ���� ������� ������� ������
-        if (fromSquare.transform.childCount > 1) //���������, ��� �� ��������� ������ ���� ������
+        fromSquare = GameObject.Find(move.Substring(0, 2)); //ищем начальную клетку (первые два символа хода)
+        toSquare = GameObject.Find(move.Substring(2, 2)); //ищем конечную клетку (последние два символа хода)
+        if (fromSquare.transform.childCount > 1) //убеждаемся, что на начальной клетке есть фигура (более двух потомков у объекта)
         {
-            GameObject currentPiece = fromSquare.transform.GetChild(1).gameObject; //�� ��������� ������ ������� ������, �������� ����� ����������� �� ��������� � ������� ������
+            currentPiece = fromSquare.transform.GetChild(1).gameObject; //запоминаем фигуру, которую будем двигать
 
-            if ((fromSquare) && (toSquare) && (currentPiece) && (toSquare != fromSquare)) //����������, ��� ����� ��������� � ������� ������, � ��� �� ��������� ���� ������
+            if ((fromSquare) && (toSquare) && (currentPiece) && (toSquare != fromSquare)) //убеждаемся, что корректно нашлись исходные и целевые клетки, фигура, а также что исходная клетка не равна целевой (ходить E2E2 нельзя)
             {
-                isMoving = true; //���������, ��� ����� ������� ������
-                from = fromSquare; //������
-                to = toSquare; //� ����
+                isMoving = true; //переключаем флаг, что фигуру нужно двигать
             }
             else
-                Debug.Log("Can't make a move:" + move);
+                Debug.Log("Can't make a move:" + move); //сообщаем, что текущий ход сделать нельзя
         }
         else
-            Debug.Log("Can't make a move:" + move);
+            Debug.Log("Can't make a move:" + move); //сообщаем, что текущий ход сделать нельзя
 
     }
 
     void Update()
     {
-        if (isMoving) //���� ����� ������� ������
-        {
-            GameObject currentPiece = from.transform.GetChild(1).gameObject; //���� ������ �� �������� ������ ����� �������� ������
-            currentPiece.transform.position = Vector3.MoveTowards(currentPiece.transform.position, to.transform.position, 0.025f); //������� ������ �� 2,5% �� ����
-            if (currentPiece.transform.position == to.transform.position) //���� ������ �������
+        if (isMoving) //если фигуру нужно двигать
+        {            
+            currentPiece.transform.position = Vector3.MoveTowards(currentPiece.transform.position, toSquare.transform.position, movingSpeed * Time.deltaTime); //двигаем фигуру по прямой от начальной к конечной клетке со скоростью movingSpeed
+            if (Vector3.Distance(currentPiece.transform.position, toSquare.transform.position) < 0.05f) //если фигура добралась до точки назначения (осталось двигать менее 0.05)
             {
-                isMoving = false; //���������, ��� �������� ���������
-                if (to.transform.childCount > 1)
-                    Destroy(to.transform.GetChild(1).gameObject); //���� �� ������� ������ ���� ������ - ���������� �
+                isMoving = false; //указываем, что больше передвигать фигуру не нужно
+                currentPiece.transform.position = toSquare.transform.position; //ставим фигуру точно на нужную позицию
 
-                currentPiece.transform.SetParent(to.transform); //����������� ������������ ������ � ����� ������
-                currentPiece.transform.position = to.transform.position; //������� ������ �� ����� ������*/
-            }                
+                if (toSquare.transform.childCount > 1)
+                    Destroy(toSquare.transform.GetChild(1).gameObject); //если на целевой клетке была другая фигура - уничтожаем её
+
+                currentPiece.transform.SetParent(toSquare.transform); //перепривязываем передвинутую фигуру к конечной клетке
+
+                //обнуляем клетки и фигуру
+                fromSquare = null;
+                toSquare = null;
+                currentPiece = null;}                
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ManualMove : MonoBehaviour
+public class ManualMove : MonoBehaviour //скрипт нужен для отладки игры! в целевом состоянии пользователь не будет иметь возможности делать ходы самостоятельно
 {
     private int moveStatus = 0; //0 - ход не задан, 1 - задано откуда ходим
     void Start()
@@ -25,10 +25,5 @@ public class ManualMove : MonoBehaviour
                 moveStatus = 0;
                 break;
         }
-    }
-
-    void Update()
-    {
-        
     }
 }

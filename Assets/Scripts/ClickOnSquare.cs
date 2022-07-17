@@ -4,20 +4,8 @@ using UnityEngine;
 
 public class ClickOnSquare : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnMouseDown()
     {
-        GameEvents.current.SendSquare(this.gameObject.name);        
+        GameEvents.current.SendSquare(this.gameObject.name); //указываем, что пользователь кликнул на определённую клетку        
     }
 }

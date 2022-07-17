@@ -13,6 +13,7 @@ public class GameEvents : MonoBehaviour
     }
 
     public event Action<string> onMakeMove; //объ€вл€ем событие "сделать ход"
+
     public void MakeMove(string move) //объ€вл€ем публичный метод дл€ событи€ 
     {
         if (onMakeMove != null) //перед вызовом убеждаемс€, что событие существует

@@ -14,7 +14,7 @@ public class GameInitialization : MonoBehaviour
     [Header("Pieces Prefabs")]
     public GameObject[] chessPieces; //префабы фигур в порядке: Король, Королева, Ладья, Слон, Конь, Пешка (сперва белые, потом чёрные)
 
-    void AddPieceToTheSquare(string pieceName, string squareName) //функция помещает указанную фигуру на указанную клетку, формат "White Pawn", "A2"
+    void AddPieceToTheSquare(string pieceName, string squareName) //функция помещает указанную фигуру на нужную клетку, формат "White Pawn", "A2"
     {
         int pieceNumber = 0;
         //выбираем номер фигуры по названию
