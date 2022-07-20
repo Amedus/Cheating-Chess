@@ -54,7 +54,8 @@ public class PiecesMovingController : MonoBehaviour
                 //обнуляем клетки и фигуру
                 fromSquare = null;
                 toSquare = null;
-                currentPiece = null;}                
+                currentPiece = null;
+            }                
         }
     }
 }

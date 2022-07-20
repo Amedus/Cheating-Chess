@@ -126,12 +126,6 @@ public class GameInitialization : MonoBehaviour
     void Start()
     {
         CreateBoard();
-        AddPiecesToStartingPositions();
-        
-    }
-
-    void Update()
-    {
-        
+        AddPiecesToStartingPositions();        
     }
 }
