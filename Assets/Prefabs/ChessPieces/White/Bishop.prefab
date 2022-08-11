@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6654514864005201835}
   - component: {fileID: 6176596728762054150}
   m_Layer: 0
-  m_Name: WhiteBishop
+  m_Name: Bishop
   m_TagString: White
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
