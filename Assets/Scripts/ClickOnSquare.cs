@@ -6,6 +6,6 @@ public class ClickOnSquare : MonoBehaviour
 {
     void OnMouseDown()
     {
-        GameEvents.current.SendSquare(this.gameObject.name); //указываем, что пользователь кликнул на определённую клетку        
+        GameEvents.current.SendSquare(this.gameObject.name); //СѓРєР°Р·С‹РІР°РµРј, С‡С‚Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РєР»РёРєРЅСѓР» РЅР° РѕРїСЂРµРґРµР»С‘РЅРЅСѓСЋ РєР»РµС‚РєСѓ
     }
 }
