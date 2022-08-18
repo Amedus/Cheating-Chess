@@ -117,7 +117,7 @@ public class TurnController : MonoBehaviour
     void Update()
     {
 
-        if (currentTurn == "White")
+        if (currentTurn == "White") //for debug purpose
         {
             foreach (string move in QueenMoves("White", "A3", 0))
                 Debug.Log(move);
