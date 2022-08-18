@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 1748909758}
   - component: {fileID: 1748909755}
   - component: {fileID: 1748909757}
+  - component: {fileID: 1748909759}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -211,6 +212,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3477e9ade500644098d5a24783e5487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1748909759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748909754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 832d06e6812c34586b7aeafbc79aa801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTurn: White
+  whiteCheatStage: 0
+  blackCheatStage: 0
 --- !u!1 &2121173436
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,7 +384,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
