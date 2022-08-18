@@ -30,7 +30,7 @@ public class TurnController : MonoBehaviour
             return "";
     }
 
-    public List<string> SquaresAside(string square, int plusX, int plusY) //return list of names of square +X +Y coords or return empty string if new square not exist
+    public List<string> SquaresAside(string square, int plusX, int plusY) //return list of names of square in direction +X +Y coords or return empty string if new squares not exist
     {
         List<string> possibleSquares = new List<string>();
         GameObject nextSquare = GameObject.Find(SquareAside(square, plusX, plusY));
