@@ -16,7 +16,7 @@ public class PiecesMovingController : MonoBehaviour
         GameEvents.current.onMakeAMove += MakeAMove; //подписываемся на событие MakeMove
     }
 
-    private void MakeAMove(string move) //выполнение хода формата "E2E4" из строки move при триггере события MakeMove
+    private void MakeAMove(string move) //выполнение хода формата "E2E4" из строки move при триггере события MakeAMove
     {
         fromSquare = GameObject.Find(move.Substring(0, 2)); //ищем начальную клетку (первые два символа хода)
         toSquare = GameObject.Find(move.Substring(2, 2)); //ищем конечную клетку (последние два символа хода)

@@ -109,6 +109,20 @@ public class TurnController : MonoBehaviour
         return ValidMoves(possibleSquares, fromSquare, color);
     }
 
+
+    //place for functions of other pieces
+
+
+
+    private List<string> PawnMoves(string color, string fromSquare, int cheatStage) //return list of possible moves for Pawn with specific color on fromSquare
+    {
+        List<string> possibleSquares = new List<string>();
+
+
+
+        return ValidMoves(possibleSquares, fromSquare, color);
+    }
+
     private void NextTurn(string playerColor)
     {
 
@@ -119,7 +133,7 @@ public class TurnController : MonoBehaviour
 
         if (currentTurn == "White") //for debug purpose
         {
-            foreach (string move in QueenMoves("White", "A3", 0))
+            foreach (string move in KingMoves("White", "A3", 0))
                 Debug.Log(move);
 
             currentTurn = "Black";
