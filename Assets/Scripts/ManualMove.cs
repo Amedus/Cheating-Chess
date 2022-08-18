@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ManualMove : MonoBehaviour
+public class ManualMove : MonoBehaviour //for test purpose only
 {
     private int moveStatus = 0;
     void Start()

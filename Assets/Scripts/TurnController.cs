@@ -70,14 +70,14 @@ public class TurnController : MonoBehaviour
         return possibleSquares;
     }    
 
-    public List<string> PlayerPossibleMoves(string playerColor)
+    public List<string> PlayerPossibleMoves(string playerColor) //return list of possible moves for specific player
     {
         List<string> possibleMoves = new List<string>();
 
         return possibleMoves;
     }
 
-    private List<string> KingMoves(string color, string fromSquare, int cheatStage) //return list of possible moves for king with specific color on fromSquare
+    private List<string> KingMoves(string color, string fromSquare, int cheatStage) //return list of possible moves for King with specific color on fromSquare
     {
         List<string> possibleSquares = new List<string>();
 
@@ -93,7 +93,7 @@ public class TurnController : MonoBehaviour
         return ValidMoves(possibleSquares, fromSquare, color);
     }
 
-    private List<string> QueenMoves(string color, string fromSquare, int cheatStage)
+    private List<string> QueenMoves(string color, string fromSquare, int cheatStage) //return list of possible moves for Queen with specific color on fromSquare
     {
         List<string> possibleSquares = new List<string>();
 
