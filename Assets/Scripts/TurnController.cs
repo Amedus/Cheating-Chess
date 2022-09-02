@@ -111,8 +111,44 @@ public class TurnController : MonoBehaviour
 
 
     //place for functions of other pieces
+    private List<string> RookMoves(string color, string fromSquare, int cheatStage) //return list of possible moves for Queen with specific color on fromSquare
+    {
+        List<string> possibleSquares = new List<string>();
 
+        possibleSquares.AddRange(SquaresAside(fromSquare, 0, 1));
+        possibleSquares.AddRange(SquaresAside(fromSquare, 1, 0));
+        possibleSquares.AddRange(SquaresAside(fromSquare, 0, -1));
+        possibleSquares.AddRange(SquaresAside(fromSquare, -1, 0));
 
+        return ValidMoves(possibleSquares, fromSquare, color);
+    }
+    private List<string> BishopMoves(string color, string fromSquare, int cheatStage) //return list of possible moves for Queen with specific color on fromSquare
+    {
+        List<string> possibleSquares = new List<string>();
+
+        possibleSquares.AddRange(SquaresAside(fromSquare, 1, 1));
+        possibleSquares.AddRange(SquaresAside(fromSquare, 1, -1));
+        possibleSquares.AddRange(SquaresAside(fromSquare, -1, -1));
+        possibleSquares.AddRange(SquaresAside(fromSquare, -1, 1));
+
+        return ValidMoves(possibleSquares, fromSquare, color);
+    }
+     private List<string> KnightMoves(string color, string fromSquare, int cheatStage) //return list of possible moves for Queen with specific color on fromSquare
+    {
+        List<string> possibleSquares = new List<string>();
+
+        possibleSquares.AddRange(SquaresAside(fromSquare, 2, 1));
+        possibleSquares.AddRange(SquaresAside(fromSquare, 2, -1));
+        possibleSquares.AddRange(SquaresAside(fromSquare, -2, 1));
+        possibleSquares.AddRange(SquaresAside(fromSquare, -2, -1));
+        possibleSquares.AddRange(SquaresAside(fromSquare, 1, 2));
+        possibleSquares.AddRange(SquaresAside(fromSquare, -1, 2));
+        possibleSquares.AddRange(SquaresAside(fromSquare, 1, -2));
+        possibleSquares.AddRange(SquaresAside(fromSquare, -1, -2));
+        
+          return ValidMoves(possibleSquares, fromSquare, color);
+    }
+    
 
     private List<string> PawnMoves(string color, string fromSquare, int cheatStage) //return list of possible moves for Pawn with specific color on fromSquare
     {
